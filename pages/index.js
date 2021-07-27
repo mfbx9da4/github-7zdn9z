@@ -5,6 +5,7 @@ const worker =
 
 export default function Index() {
   const [text, setText] = useState('');
+  const [text1, setText1] = useState('');
 
   useEffect(() => {
     worker.onmessage = evt => setText(evt.data.text);
@@ -14,10 +15,16 @@ export default function Index() {
     worker.postMessage(e.target.value);
   }, []);
 
+  const onChange1 = useCallback(e => {
+    setText1(e.target.value);
+  }, []);
+
   return (
     <div>
-      <p>Do work in a WebWorker!</p>
+      <p>Text field connected to web worker!</p>
       <input type="text" value={text} onChange={onChange} />
+      <p>Normal react text field</p>
+      <input type="text" value={text1} onChange={onChange1} />
     </div>
   );
 }
