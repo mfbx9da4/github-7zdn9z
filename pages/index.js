@@ -33,7 +33,7 @@ export default function Index() {
   useEffect(() => {
     timer.timeEnd('react-only');
     timer.timeEnd('web-worker');
-  }, []);
+  });
 
   return (
     <div>
