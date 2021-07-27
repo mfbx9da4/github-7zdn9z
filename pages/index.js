@@ -1,24 +1,23 @@
-import { useEffect, useRef, useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react';
+
+const worker =
+  process.browser && new Worker(new URL('../worker.js', import.meta.url));
 
 export default function Index() {
-  const workerRef = useRef()
-  useEffect(() => {
-    workerRef.current = new Worker(new URL('../worker.js', import.meta.url))
-    workerRef.current.onmessage = (evt) =>
-      alert(`WebWorker Response => ${evt.data}`)
-    return () => {
-      workerRef.current.terminate()
-    }
-  }, [])
+  const [text, setText] = useState('');
 
-  const handleWork = useCallback(async () => {
-    workerRef.current.postMessage(100000)
-  }, [])
+  useEffect(() => {
+    worker.onmessage = evt => setText(evt.data.text);
+  }, []);
+
+  const onChange = useCallback(e => {
+    worker.postMessage(e.target.value);
+  }, []);
 
   return (
     <div>
       <p>Do work in a WebWorker!</p>
-      <button onClick={handleWork}>Calculate PI</button>
+      <input type="text" value={text} onChange={onChange} />
     </div>
-  )
+  );
 }

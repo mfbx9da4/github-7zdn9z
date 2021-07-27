@@ -1,6 +1,20 @@
-// This is a module worker, so we can use imports (in the browser too!)
-import pi from './utils/pi'
+import faker from 'faker';
 
-addEventListener('message', (event) => {
-  postMessage(pi(event.data))
-})
+let state = { items: [] };
+Array.from({ length: 5000 }).map(x => {
+  state.items.push({
+    id: faker.datatype.uuid(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    description: faker.lorem.paragraph()
+  });
+});
+
+const reduce = text => {
+  state = { ...state, text };
+  return state;
+};
+
+addEventListener('message', event => {
+  postMessage(reduce(event.data));
+});
