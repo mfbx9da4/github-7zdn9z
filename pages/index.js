@@ -41,6 +41,7 @@ export default function Index() {
       <input type="text" value={text} onChange={onChange} />
       <p>Normal react text field</p>
       <input type="text" value={text1} onChange={onChange1} />
+      <hr />
       <button onClick={onShowTimings}>Show timings</button>
       <pre>{JSON.stringify(results, null, 2)}</pre>
     </div>
