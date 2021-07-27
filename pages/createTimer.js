@@ -22,5 +22,7 @@ export const createTimer = () => {
   const count = label => (timings[label] || []).length;
   const totals = () =>
     Object.keys(timings).map(label => ({ label, total: total(label) }));
-  return { time, timeEnd, timings, average, count, total, totals };
+  const averages = () =>
+    Object.keys(timings).map(label => ({ label, average: average(label) }));
+  return { time, timeEnd, timings, average, count, total, totals, averages };
 };

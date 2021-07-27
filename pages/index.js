@@ -27,7 +27,7 @@ export default function Index() {
   }, []);
 
   const onShowTimings = useCallback(() => {
-    setResults(timer.totals());
+    setResults(timer.averages());
   }, []);
 
   useEffect(() => {
