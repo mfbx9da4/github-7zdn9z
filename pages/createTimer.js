@@ -13,6 +13,7 @@ export const createTimer = () => {
   const timeEnd = label => {
     const end = performance.now();
     if (started[label]) {
+      started[label] = undefined;
       timings[label] = timings[label] || [];
       timings[label].push(end - started[label]);
     }
