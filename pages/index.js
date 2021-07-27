@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { createTimer } from './createTimer';
 
 const timer = createTimer();
-window.timer = timer;
+if (process.browser) window.timer = timer;
 
 const worker =
   process.browser && new Worker(new URL('../worker.js', import.meta.url));
