@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { createTimer } from './createTimer';
 
 const timer = createTimer();
+window.timer = timer;
 
 const worker =
   process.browser && new Worker(new URL('../worker.js', import.meta.url));
@@ -26,7 +27,7 @@ export default function Index() {
   }, []);
 
   const onShowTimings = useCallback(() => {
-    setResults(timer);
+    setResults(timer.totals());
   }, []);
 
   useEffect(() => {
