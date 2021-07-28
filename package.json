@@ -11,5 +11,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/faker": "^5.5.7"
+  }
 }

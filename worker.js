@@ -6,7 +6,8 @@ Array.from({ length: 5000 }).map(x => {
     id: faker.datatype.uuid(),
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
-    description: faker.lorem.paragraph()
+    description: faker.lorem.paragraph(),
+    dob: faker.dob()
   });
 });
 
