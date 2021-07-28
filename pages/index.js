@@ -14,7 +14,6 @@ export default function Index() {
 
   useEffect(() => {
     worker.onmessage = evt => {
-      console.log(evt.data);
       setText(evt.data.text);
     };
   }, []);

@@ -1,13 +1,14 @@
 import faker from 'faker';
 
 let state = { items: [] };
-Array.from({ length: 5000 }).map(x => {
+Array.from({ length: 10000 }).map(x => {
   state.items.push({
     id: faker.datatype.uuid(),
     firstName: faker.name.firstName(),
     lastName: faker.name.lastName(),
     description: faker.lorem.paragraph(),
-    dob: faker.dob()
+    createdAt: faker.date.recent(),
+    updatedAt: faker.date.recent()
   });
 });
 
