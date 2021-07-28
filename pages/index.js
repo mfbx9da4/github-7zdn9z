@@ -13,7 +13,10 @@ export default function Index() {
   const [results, setResults] = useState({});
 
   useEffect(() => {
-    worker.onmessage = evt => setText(evt.data.text);
+    worker.onmessage = evt => {
+      console.log(evt.data);
+      setText(evt.data.text);
+    };
   }, []);
 
   const onChange = useCallback(e => {
